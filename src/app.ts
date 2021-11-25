@@ -7,12 +7,17 @@ import KoaStatic = require('koa-static');
 import { resolve } from 'path';
 
 
+
 export class App extends Koa<KoaStateAuth> {
+    private db = new Database(
+        resolve(__dirname, '../functionote.db'),
+        { fileMustExist: true },
+    );
     private auth = new Auth(this.db);
     private router = new Router(this.db);
     private passport = new Passport(this.auth);
 
-    constructor(private db: Database.Database) {
+    constructor() {
         super();
         this.use(Session({
             signed: false,
