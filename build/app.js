@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const Koa = require("koa");
-const ffs_1 = require("ffs");
 const auth_1 = require("./auth");
 const Session = require("koa-session");
 const functionote_backend_1 = require("functionote-backend");
@@ -12,9 +11,8 @@ class App extends Koa {
     constructor(db) {
         super();
         this.db = db;
-        this.ffs = new ffs_1.FunctionalFileSystem(this.db);
         this.auth = new auth_1.Auth(this.db);
-        this.router = new functionote_backend_1.Router(this.db, this.ffs);
+        this.router = new functionote_backend_1.Router(this.db);
         this.passport = new auth_1.Passport(this.auth);
         this.use(Session({
             signed: false,

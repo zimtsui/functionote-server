@@ -1,9 +1,9 @@
 {
-  "name": "functionote-backend",
+  "name": "functionote-server",
   "description": "",
   "version": "0.0.1",
-  "main": "./build/app.js",
-  "types": "./build/app.d.ts",
+  "main": "./build/server.js",
+  "types": "./build/server.d.ts",
   "dependencies": {
     "@koa/router": "^10.1.1",
     "@types/better-sqlite3": "^7.4.1",
@@ -16,7 +16,6 @@
     "@types/node": "^16.11.7",
     "@types/passport-http": "^0.3.9",
     "better-sqlite3": "^7.4.4",
-    "ffs": "github:zimtsui/ffs",
     "functionote-backend": "github:zimtsui/functionote-backend",
     "koa": "^2.13.4",
     "koa-passport": "^4.1.4",
@@ -28,7 +27,7 @@
   "scripts": {
     "build": "tsc -b ./src/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --enable-source-maps ./test.js"
+    "start": "node --enable-source-maps ./build/server.js"
   },
   "author": "Zim"
 }

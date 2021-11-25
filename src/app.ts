@@ -1,17 +1,15 @@
 import Koa = require('koa');
 import Database = require('better-sqlite3');
-import { FunctionalFileSystem } from 'ffs';
 import { Passport, Auth } from './auth';
 import Session = require('koa-session');
-import { Router } from 'functionote-backend';
+import { Router, KoaStateAuth } from 'functionote-backend';
 import KoaStatic = require('koa-static');
 import { resolve } from 'path';
 
 
-export class App extends Koa {
-    private ffs = new FunctionalFileSystem(this.db);
+export class App extends Koa<KoaStateAuth> {
     private auth = new Auth(this.db);
-    private router = new Router(this.db, this.ffs);
+    private router = new Router(this.db);
     private passport = new Passport(this.auth);
 
     constructor(private db: Database.Database) {

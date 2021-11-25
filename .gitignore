@@ -1,5 +1,8 @@
 # nodejs
 /node_modules
 
-# test
+# database
 /functionote.db
+
+# frontend
+/srv
